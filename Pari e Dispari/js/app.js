@@ -24,8 +24,8 @@ dispari.addEventListener('click', function(){
     choice = 'dispari';
 })
 
-// set input-bar length
-document.getElementById('input').setAttribute('size',document.getElementById('input').getAttribute('placeholder').length);
+// set inputNumber-bar length
+document.getElementById('inputNumber').setAttribute('size',document.getElementById('inputNumber').getAttribute('placeholder').length);
 
 // run the game
 
@@ -35,7 +35,7 @@ runTheGame.addEventListener('click', function(){
 
     console.log('your choice is ' + choice);
 
-    let userNumber = document.getElementById('input').value.trim();
+    let userNumber = document.getElementById('inputNumber').value.trim();
     console.log('user number ' + userNumber);
 
     // check inputs
@@ -48,10 +48,17 @@ runTheGame.addEventListener('click', function(){
         userNumber =  parseInt(userNumber);
         pcNumber = random1To5();
         console.log('pc number ' + pcNumber);
+
+        const results = document.querySelector('.results');
+        resultBox = results.appendChild(document.createElement('div'));
+        resultBox.classList.add('col-4','card','p-3');
+
         if (choice == pariDispari(userNumber,pcNumber)){
             console.log('you win');
+            resultBox.innerHTML = generatemessage('Win', choice, userNumber, pcNumber);
         } else {
             console.log('you loose');
+            resultBox.innerHTML = generatemessage('Loose', choice, userNumber, pcNumber);
         }
     }
 })
@@ -64,7 +71,7 @@ clear.addEventListener('click', function(){
     dispari.classList.remove('d-none');
     pari.classList.remove('d-none');
     choice = '';
-    document.getElementById('input').value = '';
+    document.getElementById('inputNumber').value = '';
 })
 
 
@@ -86,5 +93,17 @@ function pariDispari(num1, num2) {
     }
 }
 
+
+function generatemessage(type, choice, userNumber, pcNumber) {
+    return `
+    <h4 class="card-title msg-${type}">${type}</h4>
+    <p>
+        Your choice is ${choice}<br>
+        Your number is ${userNumber}<br>
+        Pc number is ${pcNumber}<br>
+        You ${type}!
+    </p>
+    `;
+}
 
 
