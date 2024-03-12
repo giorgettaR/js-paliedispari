@@ -35,7 +35,7 @@ runTheGame.addEventListener('click', function(){
 
     console.log('your choice is ' + choice);
 
-    const userNumber = document.getElementById('input').value.trim();
+    let userNumber = document.getElementById('input').value.trim();
     console.log('user number ' + userNumber);
 
     // check inputs
@@ -45,6 +45,7 @@ runTheGame.addEventListener('click', function(){
         alert('You need to type a number between 1 and 5');
 
     } else {
+        userNumber =  parseInt(userNumber);
         pcNumber = random1To5();
         console.log('pc number ' + pcNumber);
         if (choice == pariDispari(userNumber,pcNumber)){
@@ -63,8 +64,9 @@ clear.addEventListener('click', function(){
     dispari.classList.remove('d-none');
     pari.classList.remove('d-none');
     choice = '';
-    document.getElementById('input').setAttribute('placeholder',"Inserisci un numero da 1 a 5");
+    document.getElementById('input').setAttribute('placeholder','Inserisci un numero da 1 a 5');
 })
+
 
 
 // Functions
