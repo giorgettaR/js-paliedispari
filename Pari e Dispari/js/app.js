@@ -64,7 +64,7 @@ clear.addEventListener('click', function(){
     dispari.classList.remove('d-none');
     pari.classList.remove('d-none');
     choice = '';
-    document.getElementById('input').setAttribute('placeholder','Inserisci un numero da 1 a 5');
+    document.getElementById('input').value = '';
 })
 
 
